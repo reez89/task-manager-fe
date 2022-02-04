@@ -5,6 +5,8 @@ import { MaterialModule } from '../common/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SecureComponent } from './secure.component';
 import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -13,6 +15,8 @@ import { RouterModule } from '@angular/router';
     SecureComponent,
     DashboardComponent,
     ToolbarComponent,
+    ProfileComponent,
+    UsersComponent,
   ],
   exports: [
     DashboardComponent,

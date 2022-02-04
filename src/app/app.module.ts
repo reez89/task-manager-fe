@@ -15,6 +15,8 @@ import { LoginComponent } from './pubblic/login/login.component';
 import { RegisterComponent } from './pubblic/register/register.component';
 import { SecureModule } from './secure/secure.module';
 import { PublicModule } from './pubblic/public.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CredentialInterceptor } from './interceptors/credential.interceptor';
 
 @NgModule( {
   declarations: [
@@ -31,7 +33,11 @@ import { PublicModule } from './pubblic/public.module';
     SecureModule,
     PublicModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: CredentialInterceptor,
+    multi: true
+  } ],
   bootstrap: [ AppComponent ]
 } )
 export class AppModule {}

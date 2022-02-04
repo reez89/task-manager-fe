@@ -4,14 +4,19 @@ import { LoginComponent } from './pubblic/login/login.component';
 import { PubblicComponent } from './pubblic/pubblic.component';
 import { RegisterComponent } from './pubblic/register/register.component';
 import { DashboardComponent } from './secure/dashboard/dashboard.component';
+import { ProfileComponent } from './secure/profile/profile.component';
 import { SecureComponent } from './secure/secure.component';
+import { UsersComponent } from './secure/users/users.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SecureComponent,
     children: [
-      { path: '', component: DashboardComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'users', component: UsersComponent },
     ]
   },
 

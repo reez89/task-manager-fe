@@ -1,4 +1,7 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from './interfaces/user';
+import { AuthService } from './services/auth.service';
 import { SidenavService } from './sidenav/sidenav.service';
 
 @Component( {
@@ -6,13 +9,14 @@ import { SidenavService } from './sidenav/sidenav.service';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ]
 } )
-export class AppComponent implements AfterViewInit {
-  title = 'task-manager-fe';
+export class AppComponent implements OnInit {
 
-  constructor( private sidenavService: SidenavService ) {
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {
   }
 
-  ngAfterViewInit(): void {
-    // this.sidenavService.setSidenav( this.sidenav );
+  ngOnInit() {
   }
 }

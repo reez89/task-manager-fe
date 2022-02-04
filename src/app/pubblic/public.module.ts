@@ -5,6 +5,9 @@ import { RegisterComponent } from './register/register.component';
 import { PubblicComponent } from './pubblic.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../common/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from '../secure/toolbar/toolbar.component';
 
 
 
@@ -17,12 +20,15 @@ import { MaterialModule } from '../common/material';
   exports: [
     RegisterComponent,
     LoginComponent,
-    PubblicComponent
+    PubblicComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 } )
 export class PublicModule {}
