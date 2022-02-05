@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: [ './user-profile.component.scss' ]
 } )
 export class UserProfileComponent implements OnInit {
-  users: User[] = [];
-
+  users!: User;
+  id!: number;
   constructor(
     private userService: UserService,
     private auth: AuthService,
@@ -19,18 +19,15 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( param => {
-      const stringId = param.get( 'id' );
-      let id: number;
-      if ( stringId ) {
-        id = parseFloat( stringId );
-      }
-      this.users.forEach( ( user: any ) => {
-        if ( user.id === id )
-          this.users = user;
-        console.log( 'user', this.users );
-        console.log( 'user', id );
-      } );
+    this.id = this.route.snapshot.params.id;
+    console.log( this.id );
+    this.getUser( this.id );
+  }
+
+  getUser( id: number ) {
+    this.auth.userId( id ).subscribe( ( response: User ) => {
+      this.users = response;
+      console.log( this.id );
     } );
   }
 

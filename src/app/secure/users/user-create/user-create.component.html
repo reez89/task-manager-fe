@@ -1,12 +1,12 @@
 <form [formGroup]="form" (submit)="onSubmit()">
     <div class="form-group-container">
         <p>
-            <mat-form-field appearance="outline">
-              <mat-label>User Name</mat-label>
-              <input formControlName="userName" type="text" matInput placeholder="Placeholder">
-              <mat-hint>Insert a User Name</mat-hint>
-            </mat-form-field>
-          </p>
+        <mat-form-field appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input formControlName="userName" type="text" matInput placeholder="Placeholder">
+            <mat-hint>Insert a User Name</mat-hint>
+        </mat-form-field>
+        </p>
     </div>
     <div>
         <p>
@@ -23,18 +23,18 @@
                 </button>
                 <mat-hint>Insert a valid password</mat-hint>
             </mat-form-field>
-          </p>
+        </p>
     </div>
     <div>
         <p>
             <mat-form-field appearance="outline">
-              <mat-label>Role</mat-label>
-              <mat-select formControlName="role">
-                <mat-option *ngFor="let role of roles" value="{{role.id}}">{{role.name}}</mat-option>
-              </mat-select>
-              <mat-hint align="end">Select the role from the dropdown ^</mat-hint>
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role_id">
+                    <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
+                </mat-select>
+                <mat-hint align="end">Select the role from the dropdown ^</mat-hint>
             </mat-form-field>
-          </p>
+    </p>
     </div>
     <button mat-raised-button color="primary" >Sumbit</button>
 </form>

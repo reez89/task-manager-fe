@@ -15,6 +15,14 @@ export class UserService {
     return this.http.get<any>( `${this.endpoint}?page=${page}` );
   }
 
+  allUsers(): Observable<any> {
+    return this.http.get<any>( `${this.endpoint}` );
+  }
+
+  create( body: User ): Observable<User> {
+    return this.http.post<User>( `${this.endpoint}`, body );
+  }
+
   delete( id: number ): Observable<void> {
     return this.http.delete<void>( `${this.endpoint}/${id}` );
   }

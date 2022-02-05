@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = [ 'id', 'User Name', 'Role', 'Action' ];
   length = 100;
-  pageSize = 2;
+  pageSize = 5;
   pageEvent!: PageEvent;
   users: User[] = [];
   page = 1;
@@ -31,9 +31,9 @@ export class UsersComponent implements OnInit {
 
   loadUsers( page: number ) {
     this.userService.all( page ).subscribe( ( response ) => {
-      this.users = response.data; console.log( response );
+      this.users = response.data;
       this.length = response.meta.total;
-      this.pageSize = response.meta.total / 2;
+      // this.pageSize = response.meta.total;
     } );
   }
 
