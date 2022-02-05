@@ -26,6 +26,13 @@ export class AuthService {
   }
 
   user(): Observable<User> {
-    return this.http.get<User>( `${environment.AuthApi}/user`, { withCredentials: true } );
+    return this.http.get<User>( `${environment.AuthApi}/user` );
   }
+
+
+  userId( id: number ): Observable<User> {
+    return this.http.get<User>( `${environment.CreationApi}/user/${id}` );
+  }
+
+
 }

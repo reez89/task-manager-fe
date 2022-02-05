@@ -1,3 +1,6 @@
+<div class="add-button-container">
+  <button  routerLink="/users/create" mat-raised-button color="primary">Add User</button>
+</div>
 <mat-table [dataSource]="users" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
@@ -20,7 +23,10 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="Action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-      <mat-cell *matCellDef="let element"> </mat-cell>
+      <mat-cell *matCellDef="let element">
+        <button  (click)="deleteUser(element.id)" mat-raised-button >Delete User</button>
+        <button routerLink="/profile/element.id" mat-raised-button >Modify User Role</button>
+      </mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

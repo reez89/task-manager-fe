@@ -6,6 +6,8 @@ import { RegisterComponent } from './pubblic/register/register.component';
 import { DashboardComponent } from './secure/dashboard/dashboard.component';
 import { ProfileComponent } from './secure/profile/profile.component';
 import { SecureComponent } from './secure/secure.component';
+import { UserProfileComponent } from './secure/user-profile/user-profile.component';
+import { UserCreateComponent } from './secure/users/user-create/user-create.component';
 import { UsersComponent } from './secure/users/users.component';
 
 const routes: Routes = [
@@ -15,8 +17,14 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      {
+        path: 'profile', component: ProfileComponent, children: [
+          { path: ':id', component: UserProfileComponent },
+        ]
+      },
       { path: 'users', component: UsersComponent },
+      { path: 'users/create', component: UserCreateComponent },
+
     ]
   },
 
