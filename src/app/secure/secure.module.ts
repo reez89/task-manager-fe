@@ -12,6 +12,7 @@ import { UserCreateComponent } from './users/user-create/user-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RolesComponent } from './roles/roles.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { SearchfilterPipe } from '../searchfilter.pipe';
 
 
 
@@ -26,11 +27,13 @@ import { ProjectsComponent } from './projects/projects.component';
     UserCreateComponent,
     RolesComponent,
     ProjectsComponent,
+    SearchfilterPipe
   ],
   exports: [
     DashboardComponent,
     ToolbarComponent,
-    SecureComponent
+    SecureComponent,
+    SearchfilterPipe
   ],
 
   imports: [

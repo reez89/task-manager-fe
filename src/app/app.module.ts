@@ -17,6 +17,7 @@ import { SecureModule } from './secure/secure.module';
 import { PublicModule } from './pubblic/public.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CredentialInterceptor } from './interceptors/credential.interceptor';
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 @NgModule( {
   declarations: [

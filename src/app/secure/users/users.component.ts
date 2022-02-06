@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,6 +20,7 @@ export class UsersComponent implements OnInit {
   pageEvent!: PageEvent;
   users: User[] = [];
   page = 1;
+  searchValue: string = '';
 
   constructor(
     private userService: UserService,

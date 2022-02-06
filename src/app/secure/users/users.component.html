@@ -2,7 +2,12 @@
   <button  routerLink="/users/create" mat-raised-button color="primary">Add User</button>
 </div>
 
-<mat-table  [dataSource]="users"  class="mat-elevation-z8">
+<mat-form-field appearance="standard">
+  <mat-label>Search</mat-label>
+  <input matInput [(ngModel)]="searchValue" placeholder="Start Searching" #input>
+</mat-form-field>
+
+<mat-table  [dataSource]="users | searchfilter:searchValue"  class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
@@ -32,6 +37,10 @@
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No results for: "{{input.value}}"</td>
+    </tr>
 </mat-table>
 
 <mat-paginator 
