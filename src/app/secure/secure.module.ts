@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RolesComponent } from './roles/roles.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { SearchfilterPipe } from '../searchfilter.pipe';
+import { TasksComponent } from './tasks/tasks.component';
+import { TasksCreateComponent } from './tasks/tasks-create/tasks-create.component';
+import { TaskUpdateComponent } from './tasks/task-update/task-update.component';
 
 
 
@@ -27,7 +30,10 @@ import { SearchfilterPipe } from '../searchfilter.pipe';
     UserCreateComponent,
     RolesComponent,
     ProjectsComponent,
-    SearchfilterPipe
+    SearchfilterPipe,
+    TasksComponent,
+    TasksCreateComponent,
+    TaskUpdateComponent
   ],
   exports: [
     DashboardComponent,

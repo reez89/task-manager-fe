@@ -1,12 +1,12 @@
 
-  <mat-tab-group color="accent" backgroundColor="primary">
-    <mat-tab label="Users"> 
-        <app-users></app-users>
-    </mat-tab>
-    <mat-tab label="Projects"> 
-        <app-projects></app-projects>   
-    </mat-tab>
-    <mat-tab label="Clients"> 
-        CLIENTS    
-    </mat-tab>
-  </mat-tab-group>
+<mat-tab-group color="accent" backgroundColor="primary">
+  <mat-tab *ngIf="isAdmin" label="Users"> 
+      <app-users></app-users>
+  </mat-tab>
+  <mat-tab *ngIf="isAdmin" label="Projects"> 
+      <app-projects></app-projects>   
+  </mat-tab>
+  <mat-tab label="Tasks"> 
+    <app-tasks></app-tasks>
+  </mat-tab>
+</mat-tab-group>

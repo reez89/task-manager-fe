@@ -26,12 +26,12 @@ export abstract class RestService {
   }
 
   userId( id: number ): Observable<any> {
-    return this.http.get<User>( `${environment.CreationApi}/user/${id}` );
+    return this.http.get<any>( `${environment.CreationApi}/user/${id}` );
   }
 
 
   create( body: any ): Observable<any> {
-    return this.http.post<User>( `${this.endpoint}`, body );
+    return this.http.post<any>( `${this.endpoint}`, body );
   }
 
   delete( id: number ): Observable<void> {

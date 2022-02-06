@@ -14,6 +14,7 @@
      {{user?.userName}}</button>
     <button
       *ngIf="!isLoggedIn"
+      routerLink="/login"  
       mat-icon-button class="example-icon"
       matTooltip="Login"
       aria-label="Example icon-button with share icon">
@@ -26,4 +27,11 @@
       matTooltip="Logout"
       aria-label="Example icon-button with share icon">
       <mat-icon>logout</mat-icon></button>
+      <button
+      *ngIf="!isLoggedIn"
+      routerLink="/register"  
+      mat-icon-button class="example-icon"
+      matTooltip="Register"
+      aria-label="Example icon-button with share icon">
+      <mat-icon>emoji_people</mat-icon></button>
 </mat-toolbar>

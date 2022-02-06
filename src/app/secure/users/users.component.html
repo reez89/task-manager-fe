@@ -1,12 +1,12 @@
 <div class="add-button-container">
   <button  routerLink="/users/create" mat-raised-button color="primary">Add User</button>
 </div>
-
-<mat-form-field appearance="standard">
-  <mat-label>Search</mat-label>
-  <input matInput [(ngModel)]="searchValue" placeholder="Start Searching" #input>
-</mat-form-field>
-
+<div class="add-button-container" >
+  <mat-form-field appearance="standard">
+    <mat-label>Search</mat-label>
+    <input matInput [(ngModel)]="searchValue" placeholder="Start Searching" #input>
+  </mat-form-field>
+</div>
 <mat-table  [dataSource]="users | searchfilter:searchValue"  class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="id">

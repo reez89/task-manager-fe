@@ -13,14 +13,16 @@
         <li>
             <a  routerLink="/dashboard" [routerLinkActive]="['highlight']" >Dashboard</a>
         </li>
+        <ng-container *ngIf="isAdmin">
+            <li>
+                <a routerLink="/projects" [routerLinkActive]="['highlight']" >Projects</a>
+            </li>
+            <li>
+                <a routerLink="/users" [routerLinkActive]="['highlight']">Users</a>
+            </li>
+        </ng-container>
         <li>
-            <a routerLink="/projects" [routerLinkActive]="['highlight']" >Projects</a>
-        </li>
-        <li>
-            <a routerLink="/users" [routerLinkActive]="['highlight']">Users</a>
-        </li>
-        <li>
-            <a [routerLinkActive]="['highlight']">Clients</a>
+            <a routerLink="/tasks" [routerLinkActive]="['highlight']">Tasks</a>
         </li>
     </ul>
 </div>

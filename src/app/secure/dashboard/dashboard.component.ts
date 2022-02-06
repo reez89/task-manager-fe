@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -9,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 } )
 export class DashboardComponent implements OnInit {
 
-  constructor() {}
+  isAdmin: boolean = false;
+
+  constructor( private auth: AuthService ) {}
 
   ngOnInit(): void {
+    this.auth.isLoggedIn.subscribe( value => {
+      if ( value ) {
+        this.auth.userType.subscribe( user => {
+          if ( user?.role?.name !== 'Admin' )
+            this.isAdmin = false;
+          else
+            this.isAdmin = true;
+        } );
+      }
+    } );
   }
 
 

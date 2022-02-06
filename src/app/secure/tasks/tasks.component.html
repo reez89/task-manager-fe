@@ -1,0 +1,66 @@
+<div class="add-button-container">
+    <button  routerLink="/tasks/create" mat-raised-button color="primary">Add Task</button>
+</div>
+  
+<mat-table  [dataSource]="tasks"  class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Title">
+    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Priority">
+    <mat-header-cell *matHeaderCellDef> Priority </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.priority}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="State">
+    <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="User Id">
+        <mat-header-cell *matHeaderCellDef> User Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
+        </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Action">
+    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+        <button
+            (click)="deleteTask(element.id)"
+            *ngIf="isAdmin"
+            mat-raised-button color="warn">Delete</button>
+        <button
+            [routerLink]="['/tasks',element.id,'edit']"
+            mat-raised-button color="primary">Modify</button>
+    </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator 
+    #paginator
+    (page)="OnPageChange($event)"
+    [pageSizeOptions]="[5, 10, 20]" 
+    [pageSize]="pageSize"
+    [length]="length"
+    showFirstLastButtons
+    aria-label="Select page">
+</mat-paginator>

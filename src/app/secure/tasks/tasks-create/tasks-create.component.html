@@ -1,0 +1,71 @@
+<mat-card class="card-container">
+    <mat-card-header>
+        <mat-card-title>Creation Form</mat-card-title>
+        <mat-card-subtitle>Fill the input below to create a new User</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <mat-card-content class="card-content">
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input required="true" formControlName="title" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert a Title</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea required="true" formControlName="description" type="text" matInput placeholder="Placeholder"></textarea>
+                    <mat-hint>Insert a Description</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>Priority</mat-label>
+                    <input required="true" formControlName="priority" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert a Priority</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input required="true" formControlName="state" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert a State</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>Project Id</mat-label>
+                    <input formControlName="project_id" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert a Project id if you know it</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                        <mat-label>User Id</mat-label>
+                        <mat-select required="true" formControlName="user_id">
+                            <mat-option  *ngFor="let user of users" [value]="user.id">{{user.userName}}</mat-option>
+                        </mat-select>
+                        <mat-hint>Select the user from the dropdown ^</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+            <button [disabled]="form.invalid" mat-raised-button color="primary" >Sumbit</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
