@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SidenavService } from './sidenav.service';
 
@@ -9,13 +9,14 @@ import { SidenavService } from './sidenav.service';
 } )
 export class SidenavComponent implements OnInit {
 
-  @ViewChild( 'sidenav' ) public sidenav!: MatSidenav;
-
-  constructor( private sidenavService: SidenavService ) {}
+  @Output() navToggle = new EventEmitter<boolean>();
+  constructor() {}
 
   ngOnInit(): void {
+  };
 
-    this.sidenavService.setSidenav( this.sidenav );
+  closeNav() {
+    this.navToggle.emit( false );
   }
 
 }

@@ -5,19 +5,24 @@
       <mat-icon>menu</mat-icon></button>
     <span routerLink="/" style="cursor: pointer">Task Mnager</span>
     <span class="example-spacer"></span>
-    <button 
-      routerLink="/profile" 
+    <button
+    *ngIf="isLoggedIn"
+      routerLink="/profile"
+      matTooltip="Visit your profile"
       mat-icon-button class="example-icon user-name-btn favorite-icon">
      {{user?.userName}}</button>
-    <button 
-      routerLink="/login" 
-      mat-icon-button class="example-icon" 
+    <button
+      *ngIf="!isLoggedIn"
+      mat-icon-button class="example-icon"
+      matTooltip="Login"
       aria-label="Example icon-button with share icon">
       <mat-icon>login</mat-icon></button>
-    <button 
+    <button
+      *ngIf="isLoggedIn"
       routerLink="/login"  
       (click)="logout()" 
       mat-icon-button class="example-icon"
+      matTooltip="Logout"
       aria-label="Example icon-button with share icon">
       <mat-icon>logout</mat-icon></button>
 </mat-toolbar>

@@ -20,14 +20,12 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    console.log( this.id );
     this.getUser( this.id );
   }
 
   getUser( id: number ) {
-    this.auth.userId( id ).subscribe( ( response: User ) => {
+    this.userService.userId( id ).subscribe( ( response: User ) => {
       this.users = response;
-      console.log( this.id );
     } );
   }
 

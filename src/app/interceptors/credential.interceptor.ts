@@ -18,6 +18,8 @@ export class CredentialInterceptor implements HttpInterceptor {
       withCredentials: true
     } );
 
+    console.log( req );
+
     return next.handle( req );
   }
 }

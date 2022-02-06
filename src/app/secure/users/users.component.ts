@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 } )
 export class UsersComponent implements OnInit {
 
+  isLoggedIn = false;
   displayedColumns: string[] = [ 'id', 'User Name', 'Role', 'Action' ];
   length = 100;
   pageSize = 5;
@@ -21,37 +22,34 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private auth: AuthService,
-    private router: Router
+    private route: ActivatedRoute,
+    private auth: AuthService
+
   ) {}
 
   ngOnInit() {
-    this.loadUsers( this.page );
+    this.loadUsers();
   }
 
-  loadUsers( page: number ) {
-    this.userService.all( page ).subscribe( ( response ) => {
+  loadUsers() {
+    this.userService.all( this.page, this.pageSize ).subscribe( ( response ) => {
       this.users = response.data;
       this.length = response.meta.total;
-      // this.pageSize = response.meta.total;
+      this.pageSize = response.meta.pageSize;
     } );
   }
 
-  // setPageSizeOptions( setPageSizeOptionsInput: string ) {
-  //   if ( setPageSizeOptionsInput ) {
-  //     this.pageSizeOptions = setPageSizeOptionsInput.split( ',' ).map( str => +str );
-  //   }
-  // }
-
   OnPageChange( page: PageEvent ) {
-    this.loadUsers( page.pageIndex + 1 );
+    this.pageSize = page.pageSize;
+    this.page = page.pageIndex + 1;
+    this.loadUsers();
   }
 
   deleteUser( i: number ) {
     if ( confirm( 'Are you sure you want to delete this user' ) ) {
       this.userService.delete( i ).subscribe( () => {
         this.users = this.users.filter( user => user.id !== i );
-        this.loadUsers( this.page );
+        this.loadUsers();
       } );
     }
   }

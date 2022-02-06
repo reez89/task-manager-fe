@@ -1,7 +1,8 @@
 <div class="add-button-container">
   <button  routerLink="/users/create" mat-raised-button color="primary">Add User</button>
 </div>
-<mat-table [dataSource]="users" class="mat-elevation-z8">
+
+<mat-table  [dataSource]="users"  class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
@@ -24,8 +25,8 @@
     <ng-container matColumnDef="Action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button  (click)="deleteUser(element.id)" mat-raised-button >Delete User</button>
-        <button [routerLink]="['/users',element.id,'edit']" mat-raised-button >Modify User Role</button>
+        <button  (click)="deleteUser(element.id)" mat-raised-button color="warn">Delete User</button>
+        <button [routerLink]="['/users',element.id,'edit']" mat-raised-button color="primary">Modify User Role</button>
       </mat-cell>
     </ng-container>
   
@@ -34,8 +35,11 @@
 </mat-table>
 
 <mat-paginator 
-    [length]="length"
-    [pageSize]="pageSize"
+    #paginator
     (page)="OnPageChange($event)"
+    [pageSizeOptions]="[5, 10, 20]" 
+    [pageSize]="pageSize"
+    [length]="length"
+    showFirstLastButtons
     aria-label="Select page">
 </mat-paginator>

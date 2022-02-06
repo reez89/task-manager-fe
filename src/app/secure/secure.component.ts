@@ -18,7 +18,9 @@ export class SecureComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.user().subscribe(
-      user => { Auth.userEmitter.emit( user ); },
+      user => {
+        Auth.userEmitter.emit( user );
+      },
       err => { this.router.navigate( [ '/login' ] ); }
     );
   }

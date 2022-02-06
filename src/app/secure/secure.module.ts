@@ -10,6 +10,8 @@ import { UsersComponent } from './users/users.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RolesComponent } from './roles/roles.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 
 
@@ -22,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     UserProfileComponent,
     UserCreateComponent,
+    RolesComponent,
+    ProjectsComponent,
   ],
   exports: [
     DashboardComponent,

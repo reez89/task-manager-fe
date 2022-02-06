@@ -1,6 +1,6 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="over">
-    <app-sidenav></app-sidenav>
+    <app-sidenav (navToggle)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-toolbar (navToggle)="sidenav.open()"></app-toolbar>

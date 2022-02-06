@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 } )
 export class ToolbarComponent implements OnInit {
   @Output() navToggle = new EventEmitter<boolean>();
+  isLoggedIn = false;
   user!: User;
 
   toggleActive: boolean = false;
@@ -23,6 +24,10 @@ export class ToolbarComponent implements OnInit {
     Auth.userEmitter.subscribe(
       user => this.user = user
     );
+    this.auth.isLoggedIn.subscribe( value => {
+      this.isLoggedIn = value;
+      console.log( "toolbar", this.isLoggedIn );
+    } );
   }
 
   logout() {
