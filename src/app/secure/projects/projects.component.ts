@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Projects } from 'src/app/interfaces/projects';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component( {
@@ -9,6 +10,7 @@ import { ProjectsService } from 'src/app/services/projects.service';
   styleUrls: [ './projects.component.scss' ]
 } )
 export class ProjectsComponent implements OnInit {
+  isAdmin: boolean = false;
   displayedColumns: string[] = [ 'id', 'Project Name', 'Status', 'Client', 'Delivery', 'Action' ];
   projects!: Projects[];
   length = 100;
@@ -17,10 +19,17 @@ export class ProjectsComponent implements OnInit {
   page = 1;
 
 
-  constructor( private projectsService: ProjectsService ) {}
+  constructor(
+    private projectsService: ProjectsService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loadProjects();
+    this.auth.userType.subscribe( ( value ) => {
+      if ( value?.role?.name === 'Admin' )
+        this.isAdmin = true;
+    } );
   }
   loadProjects() {
     this.projectsService.all( this.page, this.pageSize ).subscribe( ( response ) => {

@@ -18,11 +18,13 @@ import { PublicModule } from './pubblic/public.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CredentialInterceptor } from './interceptors/credential.interceptor';
 import { SearchfilterPipe } from './searchfilter.pipe';
+import { DialogComponent } from './common/dialog/dialog.component';
 
 @NgModule( {
   declarations: [
     AppComponent,
     SidenavComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

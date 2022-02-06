@@ -26,7 +26,6 @@ export class ToolbarComponent implements OnInit {
     );
     this.auth.isLoggedIn.subscribe( value => {
       this.isLoggedIn = value;
-      console.log( "toolbar", this.isLoggedIn );
     } );
   }
 

@@ -28,11 +28,20 @@
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="Action">
-      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button  (click)="deleteUser(element.id)" mat-raised-button color="warn">Delete User</button>
-        <button [routerLink]="['/users',element.id,'edit']" mat-raised-button color="primary">Modify User Role</button>
-      </mat-cell>
+      <ng-container >
+        <mat-header-cell
+          *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button
+            *ngIf="isAdmin" 
+            (click)="deleteUser(element.id)" 
+            mat-raised-button color="warn">Delete</button>
+          <button
+            *ngIf="isAdmin" 
+            [routerLink]="['/users',element.id,'edit']" 
+            mat-raised-button color="primary">Modify</button>
+        </mat-cell>
+      </ng-container>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -10,19 +10,16 @@ import { map, tap } from 'rxjs/operators';
 } )
 export class AuthService {
 
+  users!: User;
+
   isLoggedIn = new BehaviorSubject( false );
+
+  userType = new BehaviorSubject( this.users );
 
   constructor( protected http: HttpClient ) {}
 
   login( body: any ): Observable<any> {
-    return this.http.post( `${environment.AuthApi}/login`, body ).pipe(
-      map( ( response ) => {
-        if ( response ) {
-          this.isLoggedIn.next( true );
-        } else
-          this.isLoggedIn.next( false );
-      } )
-    );
+    return this.http.post( `${environment.AuthApi}/login`, body, { withCredentials: true } );
   }
 
 

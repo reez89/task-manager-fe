@@ -1,2 +1,20 @@
-<p>User Name: {{user?.userName}}</p>
-<p>Id : {{user?.id}}</p>
+<div class="card-container">
+    <mat-card class="example-card">
+        <mat-card-subtitle>User Profile</mat-card-subtitle>
+        <mat-card-title>{{user?.userName}}</mat-card-title>
+        <mat-card-subtitle>{{user?.role?.name}}</mat-card-subtitle>
+        <mat-divider inset></mat-divider>
+        <mat-card-content>
+            <mat-card-subtitle>Tasks</mat-card-subtitle>
+            <div *ngFor="let task of user?.task">
+                <p>{{task.title}}</p>
+                <p>{{task.description}}</p>
+                <p>{{task.priority}}</p>
+                <p>{{task.state}}</p>
+            </div>
+            <ng-container *ngIf="user?.role?.name === 'Admin'">
+                <p>You have no task, you are an ADMIN !!</p>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>

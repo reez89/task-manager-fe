@@ -14,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UsersComponent implements OnInit {
 
   isLoggedIn = false;
+  isAdmin = false;
   displayedColumns: string[] = [ 'id', 'User Name', 'Role', 'Action' ];
   length = 100;
   pageSize = 5;
@@ -31,6 +32,10 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
+    this.auth.userType.subscribe( ( value ) => {
+      if ( value?.role?.name === 'Admin' )
+        this.isAdmin = true;
+    } );
   }
 
   loadUsers() {

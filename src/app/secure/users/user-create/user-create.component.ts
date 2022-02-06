@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/interfaces/role';
 import { RoleService } from 'src/app/services/role.service';
@@ -23,9 +23,9 @@ export class UserCreateComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = this.fb.group( {
-      userName: '',
-      password: '',
-      role_id: ''
+      userName: [ '', Validators.required ],
+      password: [ '', Validators.required ],
+      role_id: [ '', Validators.required ]
     } );
 
     this.roleService.all().subscribe( res => {
@@ -35,7 +35,8 @@ export class UserCreateComponent implements OnInit {
 
   onSubmit() {
     this.userService.create( this.form.getRawValue() ).subscribe(
-      () => this.router.navigate( [ '/users' ] )
+
+      () => { this.router.navigate( [ '/users' ] ); console.log( this.form ); }
     );
   }
 

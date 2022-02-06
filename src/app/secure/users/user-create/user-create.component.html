@@ -1,40 +1,52 @@
-<form [formGroup]="form" (submit)="onSubmit()">
-    <div class="form-group-container">
-        <p>
-        <mat-form-field appearance="outline">
-            <mat-label>User Name</mat-label>
-            <input formControlName="userName" type="text" matInput placeholder="Placeholder">
-            <mat-hint>Insert a User Name</mat-hint>
-        </mat-form-field>
-        </p>
-    </div>
-    <div>
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Temporary Password</mat-label>
-                <input [type]="hide ? 'password' : 'text'" formControlName="password" type="password" matInput placeholder="Placeholder">
-                <button 
-                    mat-icon-button 
-                    matSuffix 
-                    (click)="hide = !hide" 
-                    [attr.aria-label]="'Hide password'" 
-                    [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-hint>Insert a valid password</mat-hint>
-            </mat-form-field>
-        </p>
-    </div>
-    <div>
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Role</mat-label>
-                <mat-select formControlName="role_id">
-                    <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
-                </mat-select>
-                <mat-hint align="end">Select the role from the dropdown ^</mat-hint>
-            </mat-form-field>
-    </p>
-    </div>
-    <button mat-raised-button color="primary" >Sumbit</button>
-</form>
+<mat-card class="card-container">
+    <mat-card-header>
+        <mat-card-title>Creation Form</mat-card-title>
+        <mat-card-subtitle>Fill the input below to create a new User</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <mat-card-content class="card-content">
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input required="true" formControlName="userName" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert a User Name</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <mat-form-field   class="options-field" appearance="outline">
+                        <mat-label>Temporary Password</mat-label>
+                        <input required="true" [type]="hide ? 'password' : 'text'" formControlName="password" type="password" matInput placeholder="Placeholder">
+                        <button 
+                            mat-icon-button 
+                            matSuffix 
+                            (click)="hide = !hide" 
+                            [attr.aria-label]="'Hide password'" 
+                            [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-hint>Insert a valid password</mat-hint>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <mat-form-field class="options-field" appearance="outline">
+                        <mat-label>Role</mat-label>
+                        <mat-select required="true" formControlName="role_id">
+                            <mat-option  *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
+                        </mat-select>
+                        <mat-hint>Select the role from the dropdown ^</mat-hint>
+                    </mat-form-field>
+            </p>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+            <button [disabled]="form.invalid" mat-raised-button color="primary" >Sumbit</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
