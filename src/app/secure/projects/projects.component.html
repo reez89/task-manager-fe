@@ -36,7 +36,8 @@
     <ng-container matColumnDef="Action">
     <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
     <mat-cell *matCellDef="let element">
-        <button 
+        <button
+            (click)="deleteProject(element.id)"
             *ngIf="isAdmin"
             mat-raised-button color="warn">Delete</button>
         <button

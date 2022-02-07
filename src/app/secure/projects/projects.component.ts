@@ -45,4 +45,10 @@ export class ProjectsComponent implements OnInit {
     this.loadProjects();
   }
 
+  deleteProject( id: number ) {
+    this.projectsService.delete( id ).subscribe( () => {
+      this.projects = this.projects.filter( project => project.id !== id );
+    } );
+  }
+
 }
