@@ -16,6 +16,7 @@ import { SearchfilterPipe } from '../searchfilter.pipe';
 import { TasksComponent } from './tasks/tasks.component';
 import { TasksCreateComponent } from './tasks/tasks-create/tasks-create.component';
 import { TaskUpdateComponent } from './tasks/task-update/task-update.component';
+import { ProjectCreateComponent } from './projects/project-create/project-create.component';
 
 
 
@@ -33,13 +34,14 @@ import { TaskUpdateComponent } from './tasks/task-update/task-update.component';
     SearchfilterPipe,
     TasksComponent,
     TasksCreateComponent,
-    TaskUpdateComponent
+    TaskUpdateComponent,
+    ProjectCreateComponent,
   ],
   exports: [
     DashboardComponent,
     ToolbarComponent,
     SecureComponent,
-    SearchfilterPipe
+    SearchfilterPipe,
   ],
 
   imports: [

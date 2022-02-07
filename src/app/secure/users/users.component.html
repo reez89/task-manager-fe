@@ -1,34 +1,31 @@
 <div class="add-button-container">
   <button  routerLink="/users/create" mat-raised-button color="primary">Add User</button>
 </div>
-<div class="add-button-container" >
+
+<!-- Da riattivare una volta modificato il filtro -->
+<!-- <div class="add-button-container" >
   <mat-form-field appearance="standard">
     <mat-label>Search</mat-label>
     <input matInput [(ngModel)]="searchValue" placeholder="Start Searching" #input>
   </mat-form-field>
-</div>
+</div> -->
 <mat-table  [dataSource]="users | searchfilter:searchValue"  class="mat-elevation-z8">
-    <!-- Position Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
-  
-    <!-- Name Column -->
+
     <ng-container matColumnDef="User Name">
       <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.userName}} </mat-cell>
     </ng-container>
-  
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="Role">
       <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.role?.name}} </mat-cell>
     </ng-container>
-  
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="Action">
-      <ng-container >
         <mat-header-cell
           *matHeaderCellDef> Action </mat-header-cell>
         <mat-cell *matCellDef="let element">
@@ -39,17 +36,18 @@
           <button
             *ngIf="isAdmin" 
             [routerLink]="['/users',element.id,'edit']" 
-            mat-raised-button color="primary">Modify</button>
+            mat-raised-button color="primary">
+            <mat-icon>search</mat-icon>
+          </button>
         </mat-cell>
-      </ng-container>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    <tr class="mat-row" *matNoDataRow>
+   <!--  <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4">No results for: "{{input.value}}"</td>
-    </tr>
+    </tr> -->
 </mat-table>
 
 <mat-paginator 

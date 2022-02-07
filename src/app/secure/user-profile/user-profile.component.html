@@ -1,15 +1,23 @@
 <div class="card-container">
     <mat-card class="example-card">
         <mat-card-subtitle>User Profile</mat-card-subtitle>
-        <mat-card-title>{{users?.userName}}</mat-card-title>
-        <mat-card-subtitle>{{users?.role?.name}}</mat-card-subtitle>
+        <mat-card-title-group style="display: flex; justify-content: center">
+            <mat-card-title>{{users?.userName}}</mat-card-title>
+            <mat-card-subtitle>{{users?.role?.name}}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-divider></mat-divider>
         <mat-card-content>
-            <mat-card-subtitle>Tasks</mat-card-subtitle>
-            <div *ngFor="let task of users?.task">
-                <p>{{task.title}}</p>
-                <p>{{task.description}}</p>
-                <p>{{task.priority}}</p>
-                <p>{{task.state}}</p>
+            <mat-card-subtitle>Tasks :</mat-card-subtitle>
+            <div *ngFor="let task of users?.task; let i = index">
+                <mat-card style="margin-bottom : 10px">
+                    <mat-card-title>Task n.{{i+1}}</mat-card-title>
+                    <mat-card-subtitle>Title : {{task.title}}</mat-card-subtitle>
+                    <mat-card-content>
+                      <p>Description : {{task.description}}</p>
+                      <p>Priority: {{task.priority}}</p>
+                      <p>State : {{task.state}}</p>
+                    </mat-card-content>
+                </mat-card>
             </div>
             <ng-container *ngIf="users?.task?.length === 0">
                 <p>Tasks not assigned to this user</p>

@@ -1,4 +1,4 @@
-<div class="card-container">
+<!-- <div class="card-container">
     <mat-card class="example-card">
         <mat-card-subtitle>User Profile</mat-card-subtitle>
         <mat-card-title>{{user?.userName}}</mat-card-title>
@@ -16,5 +16,33 @@
                 <p>You have no task, you are an ADMIN !!</p>
             </ng-container>
         </mat-card-content>
+    </mat-card>
+</div> -->
+
+<div class="card-container">
+    <mat-card class="example-card">
+        <mat-card-subtitle>User Profile</mat-card-subtitle>
+        <mat-card-title-group style="display: flex; justify-content: center">
+            <mat-card-title>{{user?.userName}}</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-subtitle>{{user?.role?.name}}</mat-card-subtitle>
+        <mat-divider></mat-divider>
+        <mat-card-content *ngIf="user?.task">
+            <mat-card-subtitle>Tasks :</mat-card-subtitle>
+            <div *ngFor="let task of user?.task; let i = index">
+                <mat-card style="margin-bottom : 10px">
+                    <mat-card-title>Task n.{{i+1}}</mat-card-title>
+                    <mat-card-subtitle>Title : {{task.title}}</mat-card-subtitle>
+                    <mat-card-content>
+                      <p>Description : {{task.description}}</p>
+                      <p>Priority: {{task.priority}}</p>
+                      <p>State : {{task.state}}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-content>
+        <ng-container *ngIf="user?.task?.length !== 0">
+            <p>Tasks not assigned to this user</p>
+        </ng-container>
     </mat-card>
 </div>

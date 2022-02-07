@@ -5,6 +5,7 @@ import { PubblicComponent } from './pubblic/pubblic.component';
 import { RegisterComponent } from './pubblic/register/register.component';
 import { DashboardComponent } from './secure/dashboard/dashboard.component';
 import { ProfileComponent } from './secure/profile/profile.component';
+import { ProjectCreateComponent } from './secure/projects/project-create/project-create.component';
 import { ProjectsComponent } from './secure/projects/projects.component';
 import { RolesComponent } from './secure/roles/roles.component';
 import { SecureComponent } from './secure/secure.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'users/:id/edit', component: UserProfileComponent },
       { path: 'roles', component: RolesComponent },
       { path: 'projects', component: ProjectsComponent },
+      { path: 'projects/create', component: ProjectCreateComponent },
       { path: 'tasks', component: TasksComponent },
       { path: 'tasks/:id/edit', component: TaskUpdateComponent },
       { path: 'tasks/create', component: TasksCreateComponent },

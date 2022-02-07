@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from '../services/auth.service';
-import { SidenavService } from './sidenav.service';
+
 
 @Component( {
   selector: 'app-sidenav',

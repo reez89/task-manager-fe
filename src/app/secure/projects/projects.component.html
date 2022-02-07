@@ -1,21 +1,21 @@
 <div class="add-button-container">
-    <button  routerLink="/users/create" mat-raised-button color="primary">Add Project</button>
+    <button  routerLink="/projects/create" mat-raised-button color="primary">Add Project</button>
 </div>
   
 <mat-table  [dataSource]="projects"  class="mat-elevation-z8">
-    <!-- Position Column -->
+   
     <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
+    
     <ng-container matColumnDef="Project Name">
     <mat-header-cell *matHeaderCellDef> Project Name </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.projectName}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
+   
     <ng-container matColumnDef="Status">
     <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
@@ -32,7 +32,7 @@
     <mat-cell *matCellDef="let element"> {{element.clientName}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
+    
     <ng-container matColumnDef="Action">
     <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
     <mat-cell *matCellDef="let element">

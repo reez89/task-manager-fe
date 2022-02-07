@@ -1,21 +1,19 @@
-<div class="add-button-container">
-    <button  routerLink="/tasks/create" mat-raised-button color="primary">Add Task</button>
+<div class="add-button-container" >
+    <button *ngIf="isAdmin" routerLink="/tasks/create" mat-raised-button color="primary">Add Task</button>
 </div>
   
 <mat-table  [dataSource]="tasks"  class="mat-elevation-z8">
-    <!-- Position Column -->
+   
     <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="Title">
     <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="Description">
     <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
@@ -35,9 +33,8 @@
     <ng-container matColumnDef="User Id">
         <mat-header-cell *matHeaderCellDef> User Id </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
-        </ng-container>
+    </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="Action">
     <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
     <mat-cell *matCellDef="let element">

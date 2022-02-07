@@ -1,0 +1,51 @@
+<mat-card class="card-container">
+    <mat-card-header>
+        <mat-card-title>Creation Form</mat-card-title>
+        <mat-card-subtitle>Fill the input below to create a new Project</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <mat-card-content class="card-content">
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>Project Name</mat-label>
+                    <input required="true" formControlName="projectName" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert a Project Name</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                    <mat-form-field class="options-field" appearance="outline">
+                        <mat-label>Client Name</mat-label>
+                        <input required="true" formControlName="clientName" type="text" matInput placeholder="clientName">
+                        <mat-hint>Insert a Client Name</mat-hint>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>Excpected Delivery</mat-label>
+                    <input required="true" formControlName="expectedDelivery" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert an Excpected Delivery Date</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+            <div class="form-group-container">
+                <p>
+                <mat-form-field class="options-field" appearance="outline">
+                    <mat-label>status</mat-label>
+                    <input required="true" formControlName="status" type="text" matInput placeholder="Placeholder">
+                    <mat-hint>Insert the status of the project</mat-hint>
+                </mat-form-field>
+                </p>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+            <button [disabled]="form.invalid" mat-raised-button color="primary" >Sumbit</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

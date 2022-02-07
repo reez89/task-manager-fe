@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Projects } from 'src/app/interfaces/projects';
 import { User } from 'src/app/interfaces/user';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { TasksService } from 'src/app/services/tasks.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,29 +16,28 @@ export class TasksCreateComponent implements OnInit {
 
   form!: FormGroup;
   users: User[] = [];
+  projects: Projects[] = [];
   hide = true;
 
   constructor(
     private fb: FormBuilder,
     private tasksService: TasksService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private projectService: ProjectsService
   ) {}
 
   ngOnInit(): void {
-    this.userService.all().subscribe( res => {
-      this.users = res.data;
 
-    } );
-
+    this.loadItems();
 
     this.form = this.fb.group( {
       title: [ '', Validators.required ],
       description: [ '', Validators.required ],
       priority: [ '', Validators.required ],
       state: [ '', Validators.required ],
-      project_id: '',
-      user_id: '',
+      project_id: [ '', Validators.required ],
+      user_id: [ '', Validators.required ],
     } );
 
   }
@@ -46,6 +47,15 @@ export class TasksCreateComponent implements OnInit {
 
       () => { this.router.navigate( [ '/tasks' ] ); console.log( this.form ); }
     );
+  }
+
+  loadItems() {
+    this.userService.all().subscribe( res => {
+      this.users = res.data;
+    } );
+    this.projectService.all().subscribe( res => {
+      this.projects = res.data;
+    } );
   }
 
 }

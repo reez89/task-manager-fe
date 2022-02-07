@@ -9,11 +9,8 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 } )
 export class AuthService {
-
   users!: User;
-
   isLoggedIn = new BehaviorSubject( false );
-
   userType = new BehaviorSubject( this.users );
 
   constructor( protected http: HttpClient ) {}

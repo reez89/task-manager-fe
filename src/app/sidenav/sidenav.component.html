@@ -1,19 +1,19 @@
 <div class="close-button-container">
     <button
-    mat-button
-    color="accent"
-    matTooltip="Close Menu"
-    (click)="closeNav()">
+        mat-button
+        color="accent"
+        matTooltip="Close Menu"
+        (click)="closeNav()">
         <mat-icon>close</mat-icon>
     </button>
 </div>
 <mat-divider></mat-divider>
 <div class="list-container" style="padding: 20px; display: flex">
     <ul>
-        <li>
-            <a  routerLink="/dashboard" [routerLinkActive]="['highlight']" >Dashboard</a>
-        </li>
         <ng-container *ngIf="isAdmin">
+            <li>
+                <a  routerLink="/dashboard" [routerLinkActive]="['highlight']" >Dashboard</a>
+            </li>
             <li>
                 <a routerLink="/projects" [routerLinkActive]="['highlight']" >Projects</a>
             </li>
